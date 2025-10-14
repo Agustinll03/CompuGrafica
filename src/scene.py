@@ -16,6 +16,9 @@ class Scene:
         self.projection = camera.get_perspective_matrix()
         self.time = 0
 
+    def start(self):
+        print("Start")
+
     def add_object(self,model,material):
         self.objects.append(model)
         self.graphics[model.name] = Graphics(self.ctx,model,material)
@@ -100,7 +103,7 @@ class RaySceneGPU(Scene):
                 obj.rotation += glm.vec3(0.8, 0.6, 0.4)
                 obj.position.x += math.sin(self.time) * 0.01
 
-        if(self.raytacer is not None):
+        if(self.raytracer is not None):
             self._update_matrix()
             self._matrix_to_ssbo()
             self.raytracer.run()

@@ -1,6 +1,6 @@
 
 from model import Model
-from hit import HitBox
+from hit import HitBoxOBB
 import numpy as np
 import glm
 
@@ -12,7 +12,7 @@ class Quad(Model):
         self.position = glm.vec3(*position)
         self.rotation = glm.vec3(*rotation)
         self.scale = glm.vec3(*scale)
-        self.__colision = HitBox(get_model_matrix = lambda: self.get_model_matrix(), hittable= hittable)
+        self.__colision = HitBoxOBB(get_model_matrix = lambda: self.get_model_matrix(), hittable= hittable)
    
         vertices = np.array([
             -1, -1, 0,
@@ -59,7 +59,7 @@ class Quad(Model):
     def aabb(self):
         verts3 = self.__vertices.reshape(-1, 3)
     
-        pts = [self.get_model_matrix() * glm.vec4(v[1], v[2], 1.0) for v in verts3]
+        pts = [self.get_model_matrix() * glm.vec4(v[0], v[1], v[2], 1.0) for v in verts3]
         xs = [p.x for p in pts]
         ys = [p.y for p in pts]
         zs = [p.z for p in pts]
