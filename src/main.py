@@ -11,7 +11,7 @@ from quad import Quad
 WIDTH, HEIGHT = 800, 600
 
 
-SCENE_TYPE = "cpu"  # Opciones: "normal", "cpu", "gpu"
+SCENE_TYPE = "normal"  # Opciones: "normal", "cpu", "gpu"
 
 
 scene_configs = {
@@ -55,12 +55,12 @@ material_ceramic = StandardMaterial(shader, albedo_pearl, reflectivity=0.1)
 material_sprite = Material(shader_sprite, textures_data=[sprite_texture])
 
 
-cube1 = Cube((2, 0, 5), (0, 0, 0), (1, 1, 1), name="Cube1")
-cube2 = Cube((-2, 0, 5), (0, 0, 0), (1, 1, 1), name="Cube2")
+cube1 = Cube((-2, 0, 5), (0, 0, 0), (1, 1, 1), name="Cube1")
+cube2 = Cube((2, 0, 5), (0, 0, 0), (1, 1, 1), name="Cube2")
 quad = Quad((0, -3, 0), (-90, 0, 0), (10, 15, 1), name="Floor", animated=False)
 sprite = Quad((0, 0, 0), (0, 0, 0), (10, 15, 1), name="Sprite", animated=False, hittable=False)
 
-
+(2, 0, 5), (0, 0, 0), (1, 1, 1)
 camera = Camera((0, 0, 15), (0, 0, 0), (0, 1, 0), 45, WIDTH / HEIGHT, 0.01, 100.0)
 camera.set_sky_colors(top=(16, 150, 222), bottom=(181, 224, 247))
 
